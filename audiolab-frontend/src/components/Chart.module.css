@@ -1,0 +1,120 @@
+.chartCard {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.chartHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-card);
+  flex-shrink: 0;
+}
+
+.chartTitle {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--phosphor-dim);
+}
+
+.chartMeta {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+}
+
+.chartBody {
+  padding: 0.5rem;
+  height: 180px;
+  position: relative;
+}
+.chartBody canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--text-dim);
+}
+
+/* ── Spectrogram specific ── */
+.spectrogramBody {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.spectrogramWrapper {
+  display: flex;
+  gap: 0.3rem;
+  align-items: stretch;
+}
+
+.spectrogramYAxis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2px 0;
+  width: 28px;
+  flex-shrink: 0;
+}
+
+.axisLabel {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  text-align: right;
+  line-height: 1;
+}
+
+.canvasContainer {
+  flex: 1;
+  overflow: hidden;
+  min-height: 160px;
+}
+
+.spectrogramCanvas {
+  width: 100% !important;
+  height: 160px;
+  display: block;
+  image-rendering: pixelated;
+}
+
+.colorScale {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.2rem;
+}
+
+.colorBar {
+  flex: 1;
+  height: 6px;
+  background: linear-gradient(
+    to right,
+    #080b14,
+    #0a2860,
+    #0064b4,
+    #00c896,
+    #00ff64,
+    #c8ff00,
+    #ffb400
+  );
+  border: 1px solid var(--border);
+}

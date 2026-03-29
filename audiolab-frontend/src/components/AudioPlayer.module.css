@@ -1,0 +1,89 @@
+.player {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 0.6rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+}
+
+.time {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.playBtn {
+  background: transparent;
+  border: 1px solid var(--border-bright);
+  color: var(--text-primary);
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 150ms ease;
+}
+.playBtn:hover:not(:disabled) {
+  border-color: var(--phosphor-dim);
+  color: var(--phosphor);
+  background: var(--phosphor-faint);
+}
+.playBtn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.progressTrack {
+  flex: 1;
+  height: 3px;
+  background: var(--border);
+  cursor: pointer;
+  position: relative;
+}
+.progressFill {
+  height: 100%;
+  background: var(--phosphor);
+  box-shadow: 0 0 4px var(--phosphor-glow);
+  transition: width 100ms linear;
+  pointer-events: none;
+}
+
+.phosphor .playBtn:hover:not(:disabled) {
+  border-color: var(--phosphor-dim);
+  color: var(--phosphor);
+}
+.phosphor .progressFill {
+  background: var(--phosphor);
+  box-shadow: 0 0 4px var(--phosphor-glow);
+}
+
+.amber .label { color: var(--amber); }
+.amber .playBtn:hover:not(:disabled) {
+  border-color: var(--amber-dim);
+  color: var(--amber);
+  background: rgba(255,170,0,0.04);
+}
+.amber .progressFill {
+  background: var(--amber);
+  box-shadow: 0 0 4px rgba(255,170,0,0.3);
+}

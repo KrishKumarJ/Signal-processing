@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-base:        #080b0f;
+  --bg-panel:       #0d1117;
+  --bg-card:        #111820;
+  --bg-card-hover:  #151e28;
+  --border:         #1e2d3d;
+  --border-bright:  #2a3f55;
+
+  --phosphor:       #00ff88;
+  --phosphor-dim:   #00cc6a;
+  --phosphor-glow:  rgba(0, 255, 136, 0.15);
+  --phosphor-faint: rgba(0, 255, 136, 0.04);
+  --amber:          #ffaa00;
+  --amber-dim:      #cc8800;
+  --red-alert:      #ff3b3b;
+  --blue-data:      #00aaff;
+
+  --text-primary:   #c8d8e8;
+  --text-secondary: #6a8099;
+  --text-dim:       #3a5068;
+
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-ui:   'Rajdhani', sans-serif;
+
+  --transition: 150ms ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-weight: 400;
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Scanline overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 2px,
+    rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: var(--border-bright); }
+::-webkit-scrollbar-thumb:hover { background: var(--phosphor-dim); }
+
+.mono   { font-family: var(--font-mono); }
+.label  {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+.value  { font-family: var(--font-mono); color: var(--phosphor); }
+.glow   { text-shadow: 0 0 8px var(--phosphor), 0 0 20px var(--phosphor-glow); }
+
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  position: relative;
+}
+.panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,255,136,0.015) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.btn {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid var(--border-bright);
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.btn:hover  { border-color: var(--phosphor-dim); color: var(--phosphor); background: var(--phosphor-faint); }
+.btn:active { transform: scale(0.98); }
+
+.btn-primary { border-color: var(--phosphor-dim); color: var(--phosphor); background: var(--phosphor-faint); }
+.btn-primary:hover { background: rgba(0,255,136,0.1); box-shadow: 0 0 16px var(--phosphor-glow); }
+
+.btn-amber { border-color: var(--amber-dim); color: var(--amber); background: rgba(255,170,0,0.04); }
+.btn-amber:hover { background: rgba(255,170,0,0.1); box-shadow: 0 0 16px rgba(255,170,0,0.2); }
+
+.btn-danger { border-color: #ff3b3b88; color: var(--red-alert); background: rgba(255,59,59,0.04); }
+.btn-danger:hover { background: rgba(255,59,59,0.1); }
+
+select {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  padding: 0.45rem 0.8rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-bright);
+  color: var(--text-primary);
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+}
+select:focus { border-color: var(--phosphor-dim); }
+
+input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2px;
+  background: var(--border-bright);
+  outline: none;
+  cursor: pointer;
+  width: 100%;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px; height: 12px;
+  background: var(--phosphor);
+  cursor: pointer;
+  box-shadow: 0 0 6px var(--phosphor-glow);
+}
+
+@keyframes fadeIn    { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeInUp  { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+@keyframes pulseGlow { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
+@keyframes spin      { to { transform: rotate(360deg); } }
+@keyframes blink     { 0%,100% { opacity:1; } 50% { opacity:0; } }

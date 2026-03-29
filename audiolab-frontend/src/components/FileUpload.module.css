@@ -1,0 +1,92 @@
+.dropzone {
+  border: 1px dashed var(--border-bright);
+  background: var(--bg-card);
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 200ms ease;
+  position: relative;
+  overflow: hidden;
+}
+.dropzone::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--phosphor-faint) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+}
+.dropzone:hover::after,
+.dragging::after { opacity: 1; }
+
+.dropzone:hover  { border-color: var(--phosphor-dim); }
+.dragging        { border-color: var(--phosphor); border-style: solid; box-shadow: 0 0 20px var(--phosphor-glow); }
+.disabled        { cursor: not-allowed; opacity: 0.5; }
+.loaded          { border-style: solid; border-color: var(--border-bright); }
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  user-select: none;
+}
+.icon {
+  font-size: 2rem;
+  color: var(--text-dim);
+  margin-bottom: 0.5rem;
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+.primary {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--text-secondary);
+}
+.secondary {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+.formats {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  margin-top: 0.5rem;
+}
+
+.fileInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.fileIcon {
+  font-size: 1.4rem;
+  color: var(--phosphor);
+  text-shadow: 0 0 8px var(--phosphor-glow);
+}
+.fileMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  flex: 1;
+  min-width: 0;
+}
+.fileName {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fileSize {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+}
+.clearBtn {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.7rem;
+  flex-shrink: 0;
+}
