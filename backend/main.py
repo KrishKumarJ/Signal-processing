@@ -37,7 +37,7 @@ app = FastAPI(
 # Allow all origins during development. Lock this down in production.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://audiolab-eta.vercel.app"],
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
